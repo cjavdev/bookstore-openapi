@@ -14,7 +14,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: cjavdev/upload-openapi-spec-action/prepare/swagger@v1
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: cjavdev/upload-openapi-spec-action/prepare/swagger@avilla/feat-52-conversion-workflow-from-swagger-20-or-other-formats-to
         with:
           input_path: ./swagger.json
           output_path: ./openapi.json

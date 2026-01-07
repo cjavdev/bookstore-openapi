@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "description": "This is a sample server Bookstore server. You can find out more about Stainless at [http://stainless.com](http://stainless.com) or on [irc.freenode.net, #stainless](http://stainless.com/irc/). For this sample, you can use the api key `special-key` to test the authorization filters.",
+    "description": "This is a sample server Bookstore server. You can find out more about Stainless at [http://stainless.com](http://stainless.com).",
     "version": "1.0.7",
     "title": "Stainless Bookstore",
     "termsOfService": "http://stainless.com/terms/",
