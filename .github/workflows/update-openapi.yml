@@ -14,25 +14,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: cjavdev/upload-openapi-spec-action/prepare/swagger@v1
         with:
-          ref: ${{ github.head_ref }}
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Install swagger2openapi
-        run: npm install -g swagger2openapi
-
-      - name: Convert Swagger to OpenAPI
-        run: swagger2openapi ./swagger.json > openapi.json
-
-      - name: Commit changes
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "chore: update openapi.json from swagger.json"
-          file_pattern: openapi.json
+          input_path: ./swagger.json
+          output_path: ./openapi.json
+          commit: true
