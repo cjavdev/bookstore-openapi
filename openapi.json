@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "description": "This is a sample server Bookstore server. You can find out more about Stainless at [http://stainless.com](http://stainless.com).",
+    "description": "This is a sample Bookstore API. You can find out more about Stainless at [http://stainless.com](http://stainless.com).",
     "version": "1.0.7",
     "title": "Stainless Bookstore",
     "termsOfService": "http://stainless.com/terms/",
