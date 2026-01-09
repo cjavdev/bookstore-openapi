@@ -191,7 +191,7 @@
         "tags": [
           "book"
         ],
-        "summary": "Finds Books by availability status",
+        "summary": "Find books by availability status",
         "description": "Multiple status values can be provided with comma separated strings",
         "operationId": "findBooksByStatus",
         "produces": [
