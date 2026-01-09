@@ -6,7 +6,7 @@
     "title": "Stainless Bookstore",
     "termsOfService": "http://stainless.com/terms/",
     "contact": {
-      "email": "apiteam@stainless.com"
+      "email": "avilla@stainless.com"
     },
     "license": {
       "name": "Apache 2.0",
@@ -833,10 +833,10 @@
   },
   "servers": [
     {
-      "url": "https://bookstore.stainless.com/v2"
+      "url": "https://bookstore.cjav.dev/v2"
     },
     {
-      "url": "http://bookstore.stainless.com/v2"
+      "url": "http://bookstore.cjav.dev/v2"
     }
   ],
   "components": {
