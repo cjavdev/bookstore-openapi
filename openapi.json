@@ -107,7 +107,20 @@
         "description": "",
         "operationId": "addBook",
         "requestBody": {
-          "$ref": "#/components/requestBodies/Book"
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Book"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Book"
+              }
+            }
+          },
+          "description": "Book object that needs to be added to the store",
+          "required": true
         },
         "responses": {
           "405": {
@@ -131,7 +144,20 @@
         "description": "",
         "operationId": "updateBook",
         "requestBody": {
-          "$ref": "#/components/requestBodies/Book"
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Book"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Book"
+              }
+            }
+          },
+          "description": "Book object that needs to be updated in the store",
+          "required": true
         },
         "responses": {
           "400": {
@@ -853,22 +879,6 @@
           }
         },
         "description": "List of user object",
-        "required": true
-      },
-      "Book": {
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/Book"
-            }
-          },
-          "application/xml": {
-            "schema": {
-              "$ref": "#/components/schemas/Book"
-            }
-          }
-        },
-        "description": "Book object that needs to be added to the store",
         "required": true
       }
     },
