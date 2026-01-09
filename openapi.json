@@ -310,14 +310,14 @@
         "tags": [
           "book"
         ],
-        "summary": "Find book by ID",
+        "summary": "Find a book by ID",
         "description": "Returns a single book",
         "operationId": "getBookById",
         "parameters": [
           {
             "name": "bookId",
             "in": "path",
-            "description": "ID of book to return",
+            "description": "ID of book to return the details for",
             "required": true,
             "schema": {
               "type": "integer",
