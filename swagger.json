@@ -6,14 +6,14 @@
     "title": "Stainless Bookstore",
     "termsOfService": "http://stainless.com/terms/",
     "contact": {
-      "email": "apiteam@stainless.com"
+      "email": "avilla@stainless.com"
     },
     "license": {
       "name": "Apache 2.0",
       "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
     }
   },
-  "host": "bookstore.stainless.com",
+  "host": "bookstore.cjav.dev",
   "basePath": "/v2",
   "tags": [
     {
