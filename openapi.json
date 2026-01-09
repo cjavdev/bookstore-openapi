@@ -41,14 +41,14 @@
         "tags": [
           "book"
         ],
-        "summary": "uploads a cover image",
+        "summary": "uploads a cover image of a book",
         "description": "",
         "operationId": "uploadFile",
         "parameters": [
           {
             "name": "bookId",
             "in": "path",
-            "description": "ID of book to update",
+            "description": "ID of book to update the cover image for",
             "required": true,
             "schema": {
               "type": "integer",
