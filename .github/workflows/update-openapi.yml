@@ -26,16 +26,18 @@ jobs:
           ref: ${{ github.head_ref }}
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: stainless-api/upload-openapi-spec-action/prepare/swagger@v1.10.0
+      - name: Convert Swagger to OpenAPI
+        uses: stainless-api/upload-openapi-spec-action/prepare/swagger@v1.10.0
         with:
           input_path: ./swagger.json
           output_path: ${{ env.OAS_PATH }}
           commit: true
 
-      # - name: Checkout repository
-      #   uses: actions/checkout@v4
-      #   with:
-      #     fetch-depth: 2
+      - name: Checkout updated code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run preview builds
         uses: stainless-api/upload-openapi-spec-action/preview@v1
