@@ -25,7 +25,7 @@ jobs:
           ref: ${{ github.head_ref }}
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: stainless-api/upload-openapi-spec-action/prepare/swagger@v1
+      - uses: stainless-api/upload-openapi-spec-action/prepare/swagger@v1.10.0
         with:
           input_path: ./swagger.json
           output_path: ${{ env.OAS_PATH }}
