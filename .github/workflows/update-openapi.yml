@@ -16,34 +16,43 @@ env:
   OAS_PATH: ./openapi.json
 
 jobs:
-  prepare:
+  update-openapi:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      id-token: write
 
     steps:
-      - name: Checkout code
+      - name: Checkout PR head
         uses: actions/checkout@v4
         with:
           ref: ${{ github.head_ref }}
-          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+          persist-credentials: true
 
-      - name: Convert Swagger to OpenAPI
+      - name: Convert Swagger to OpenAPI (creates commit)
         uses: stainless-api/upload-openapi-spec-action/prepare/swagger@v1.10.0
         with:
           input_path: ./swagger.json
           output_path: ${{ env.OAS_PATH }}
           commit: true
 
-  preview:
-    needs: prepare
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pull-requests: write
-      id-token: write
-    steps:
-      - uses: stainless-api/upload-openapi-spec-action/preview@v1
+      # Capture the *actual* HEAD SHA after the commit.
+      - name: Capture new head SHA
+        id: sha
+        run: |
+          echo "head_sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+      - name: Run preview builds against new SHA
+        uses: stainless-api/upload-openapi-spec-action/preview@v1
         with:
-          head_sha: $(git rev-parse HEAD)
           org: ${{ env.STAINLESS_ORG }}
           project: ${{ env.STAINLESS_PROJECT }}
           oas_path: ${{ env.OAS_PATH }}
+
+          # Critical: override the action defaults
+          head_sha: ${{ steps.sha.outputs.head_sha }}
+          # Optional but often wise to make the base branch naming deterministic:
+          base_branch: ${{ format('preview/base/{0}', github.head_ref) }}
+          branch: ${{ format('preview/{0}', github.head_ref) }}
