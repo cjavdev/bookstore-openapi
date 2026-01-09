@@ -41,13 +41,19 @@ jobs:
       pull-requests: write
       id-token: write
     steps:
+      - name: Capture new head SHA
+        id: sha
+        run: |
+          echo "head_sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.head_ref }}
+          ref: ${{ steps.sha.outputs.head_sha }}
           fetch-depth: 0
 
       - uses: stainless-api/upload-openapi-spec-action/preview@v1
         with:
+          head_sha: ${{ steps.sha.outputs.head_sha }}
           org: ${{ env.STAINLESS_ORG }}
           project: ${{ env.STAINLESS_PROJECT }}
           oas_path: ${{ env.OAS_PATH }}
